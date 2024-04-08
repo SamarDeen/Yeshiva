@@ -6,8 +6,9 @@ import streamlit as st
 learn_inf = load_learner('/content/drive/My Drive/Yeshiva/FastAI_Lecture1/catbird_learner.pkl')
 ## CLASSIFIER
 def classify_img(data):
-    pred, pred_idx, probs = learn_inf.predict(data)
-    return pred, probs[pred_idx]
+    is_bird,_,probs = learn_inf.predict(PILImage.create(data))
+    #pred, pred_idx, probs = learn_inf.predict(data)
+    return is_bird, probs
 ## STREAMLIT
 st.title("Cat & Bird Classifier! 🍓😻")
 bytes_data = None
